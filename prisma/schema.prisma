@@ -20,7 +20,8 @@ model User {
 
   firstName String?
   lastName  String?
-
+  bookmark Bookmark[] //this field automtically generate when we add relation
+@@map("users") //for renaming model name
  
 }
 
@@ -33,4 +34,8 @@ model Bookmark {
   description String?
   link        String
 
+  userId Int
+
+  user User @relation(fields: [userId],references: [id])
+@@map("bookmarks")//for renaming model name
 }
